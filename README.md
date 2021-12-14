@@ -1,6 +1,9 @@
 # GhostlyFetch 👻
 
 GlostlyFetch it's a UNIX shell tool for fetching system info like kernel version, memory stats and uptime  
+Don't get scared by Bob [^1], he is the ghost that fetches the informations for you! He's harmless and cute.  
+
+**Try using the *-spooky* option 👻** 
 
 ## Installing
 
@@ -15,5 +18,7 @@ and run the following commands:
 ## License
 
 This program is licensed under the MIT license
+
+[^1]: The formatting is a bit funky right now, but i'm working on it. 
 
 👻*boo*  

@@ -4,7 +4,7 @@ mod fields;
 
 fn main() {
     let mut ascii_ghost = format!(
-"{bold_black}      ___   {reset}
+        "{bold_black}      ___   {reset}
 {bold_black}     _/ ..\\   {reset}
 {black}        ( \\  0/ ___  {reset}
 {bold_white}     \\    \\__)  {reset}
@@ -21,20 +21,21 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let is_halloween = false;
 
-    if args.len() >= 2 && args[1] == "-spooky"{
+    if args.len() >= 2 && args[1] == "-spooky" {
         ascii_ghost = format!(
-"{bold_red}         ___   {reset}
+            "{bold_red}         ___   {reset}
 {bold_red}        _/ OO\\   {reset}
 {red}           ( \\  0/ ___  {reset}
 {bold_yellow}     \\    \\__)  {reset}
 {bold_yellow}     /     \\   {reset}
 {yellow}         /       \\   {reset}
-{yellow}         \\-------/   {reset}",
-        bold_red = colours::bold_red,
-        red = colours::red,
-        bold_yellow = colours::bold_yellow,
-        yellow = colours::yellow,
-        reset = colours::reset
+{yellow}         \\-------/   {reset}
+{bold_red}     Trick or Treat?  {reset}",
+            bold_red = colours::bold_red,
+            red = colours::red,
+            bold_yellow = colours::bold_yellow,
+            yellow = colours::yellow,
+            reset = colours::reset
         );
     }
 
@@ -42,44 +43,31 @@ fn main() {
 
     let mut data_list: Vec<String> = Vec::new();
 
-    match fields::get_user_host_name(is_halloween) {
-        Ok(value) => {
-            data_list.push(value.0);
-            data_list.push(value.1);
-        },
-        Err(_) => {}
-    };
+    if let Ok(value) = fields::get_user_host_name(is_halloween) {
+        data_list.push(value.0);
+        data_list.push(value.1);
+    }
 
-    match fields::get_distro_name(){
-        Ok(value) => data_list.push(value),
-        Err(_) => {}
-    };
+    if let Ok(value) = fields::get_distro_name() {
+        data_list.push(value)
+    }
 
-    match fields::get_kernel(){
-        Ok(value) => data_list.push(value),
-        Err(_) => {}
-    };
+    if let Ok(value) = fields::get_kernel() {
+        data_list.push(value)
+    }
 
-    match fields::get_shell(){
-        Ok(value) => data_list.push(value),
-        Err(_) => {}
-    };
+    if let Ok(value) = fields::get_uptime() {
+        data_list.push(value)
+    }
 
-    match fields::get_uptime() {
-        Ok(value) => data_list.push(value),
-        Err(_) => {}
-    };
+    if let Ok(value) = fields::get_memory() {
+        data_list.push(value)
+    }
 
-    match fields::get_memory() {
-        Ok(value) => data_list.push(value),
-        Err(_) => {}
-    };
-
-    print_formated(ascii_ghost, data_list);
-
+    print_formated(ascii_ghost, data_list, is_halloween);
 }
 
-fn print_formated(left: Vec<String>, right: Vec<String>) {
+fn print_formated(left: Vec<String>, right: Vec<String>, is_halloween: bool) {
     let left_len = left.len();
     let right_len = right.len();
     let max_len = if left_len > right_len {
@@ -93,7 +81,14 @@ fn print_formated(left: Vec<String>, right: Vec<String>) {
             print!("{}", left[i]);
         }
         if i < right_len {
-            print!("{}", right[i]);
+            if is_halloween {
+                print!(
+                    "{}",
+                    right[i].replace("▪", &format!("{}▪{}", colours::yellow, colours::bold_white))
+                );
+            } else {
+                print!("{}", right[i]);
+            }
         }
         println!("");
     }

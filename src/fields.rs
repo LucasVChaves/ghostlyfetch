@@ -19,7 +19,7 @@ fn format_data(key: &str, value: &str) -> String {
 fn match_regex(search_str: &String, regex: String) -> Option<Captures> {
     let re = Regex::new(&regex).unwrap();
 
-    return re.captures(&search_str);
+    return re.captures(&search_str)
 }
 
 pub fn get_user_host_name(is_halloween: bool) -> Result<(String, String), String> {
