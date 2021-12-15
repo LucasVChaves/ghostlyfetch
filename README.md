@@ -1,7 +1,12 @@
 # GhostlyFetch 👻
 
 GlostlyFetch it's a UNIX shell tool for fetching system info like kernel version, memory stats and uptime  
+
 Don't get scared by Bob [^1], he is the ghost that fetches the informations for you! He's harmless and cute.  
+
+<br/>
+
+![Program Printscreen](./ghostlyprint.png "*Help! I am condemned and suffering!*")
 
 **Try using the *-spooky* option 👻** 
 
