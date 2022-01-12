@@ -5,7 +5,7 @@ mod fields;
 fn main() {
     let mut ascii_ghost = format!("{bold_black}      ___       {reset}
     {bold_black}    _/ ..\\      {reset}
-    {black}   ( \\  0/___   {reset}
+    {black}   ( \\  0/__   {reset}
     {black}    \\    \\__)   {reset}
     {white}    /     \\     {reset}
     {white}   /       \\    {reset}
@@ -24,7 +24,7 @@ fn main() {
     if args.len() >= 2 && args[1] == "-spooky" {
         ascii_ghost = format!("{bold_red}      ___       {reset}
         {bold_red}    _/ ..\\      {reset}
-        {red}   ( \\  0/___   {reset}
+        {red}   ( \\  0/__   {reset}
         {red}    \\    \\__)   {reset}
         {yellow}    /     \\     {reset}
         {yellow}   /       \\    {reset}
