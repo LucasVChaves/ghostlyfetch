@@ -1,3 +1,4 @@
+#[allow(non_upper_case_globals)]
 pub mod codes {
     //Regular Colours
     pub const _BLACK: &str = "\x1b[0;30m";

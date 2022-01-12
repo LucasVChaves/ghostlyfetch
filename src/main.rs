@@ -9,7 +9,7 @@ fn main() {
     {black}    \\    \\__)   {reset}
     {white}    /     \\     {reset}
     {white}   /       \\    {reset}
-    {bold_white}   \\-------/   {reset}
+    {bold_white}   \\-------/    {reset}
     ",
         bold_black = colours::bold_black,
         bold_white = colours::bold_white,
@@ -28,7 +28,7 @@ fn main() {
         {red}    \\    \\__)   {reset}
         {yellow}    /     \\     {reset}
         {yellow}   /       \\    {reset}
-        {bold_yellow}   \\-------/   {reset}
+        {bold_yellow}   \\-------/    {reset}
         {bold_yellow} Trick or Treat? {reset}
         ",
             bold_red = colours::bold_red,
@@ -53,6 +53,10 @@ fn main() {
     }
 
     if let Ok(value) = fields::get_kernel() {
+        data_list.push(value)
+    }
+
+    if let Ok(value) = fields::get_shell() {
         data_list.push(value)
     }
 

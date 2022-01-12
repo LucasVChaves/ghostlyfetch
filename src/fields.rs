@@ -1,3 +1,5 @@
+#![allow(clippy::needless_return)]
+
 use crate::colours;
 use regex::{Captures, Regex};
 use std::env;
@@ -16,10 +18,10 @@ fn format_data(key: &str, value: &str) -> String {
 }
 
 //Return all matching regex's in a string
-fn match_regex(search_str: &String, regex: String) -> Option<Captures> {
+fn match_regex(search_str: &str, regex: String) -> Option<Captures> {
     let re = Regex::new(&regex).unwrap();
 
-    return re.captures(&search_str)
+    return re.captures(search_str)
 }
 
 pub fn get_user_host_name(is_halloween: bool) -> Result<(String, String), String> {
