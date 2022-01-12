@@ -3,34 +3,34 @@ mod colours;
 mod fields;
 
 fn main() {
-    let mut ascii_ghost = format!(
-"{bold_black}      ___   {reset}
-{bold_black}     _/ ..\\   {reset}
-{black}        ( \\  0/ ___  {reset}
-{bold_white}     \\    \\__)  {reset}
-{bold_white}     /     \\   {reset}
-{white}         /       \\   {reset}
-{white}         \\-------/   {reset}",
+    let mut ascii_ghost = format!("{bold_black}      ___       {reset}
+    {bold_black}    _/ ..\\      {reset}
+    {black}   ( \\  0/___   {reset}
+    {black}    \\    \\__)   {reset}
+    {white}    /     \\     {reset}
+    {white}   /       \\    {reset}
+    {bold_white}   \\-------/   {reset}
+    ",
         bold_black = colours::bold_black,
-        black = colours::black,
         bold_white = colours::bold_white,
+        black = colours::black,
         white = colours::white,
-        reset = colours::reset
+        reset = colours::reset,
     );
 
     let args: Vec<String> = env::args().collect();
     let is_halloween = false;
 
     if args.len() >= 2 && args[1] == "-spooky" {
-        ascii_ghost = format!(
-"{bold_red}         ___   {reset}
-{bold_red}        _/ OO\\   {reset}
-{red}           ( \\  0/ ___  {reset}
-{bold_yellow}     \\    \\__)  {reset}
-{bold_yellow}     /     \\   {reset}
-{yellow}         /       \\   {reset}
-{yellow}         \\-------/   {reset}
-{bold_red}     Trick or Treat?  {reset}",
+        ascii_ghost = format!("{bold_red}      ___       {reset}
+        {bold_red}    _/ ..\\      {reset}
+        {red}   ( \\  0/___   {reset}
+        {red}    \\    \\__)   {reset}
+        {yellow}    /     \\     {reset}
+        {yellow}   /       \\    {reset}
+        {bold_yellow}   \\-------/   {reset}
+        {bold_yellow} Trick or Treat? {reset}
+        ",
             bold_red = colours::bold_red,
             red = colours::red,
             bold_yellow = colours::bold_yellow,
@@ -108,5 +108,5 @@ fn split_by_newline(ascii_art: String) -> Vec<String> {
         }
     }
 
-    return split;
+    split
 }
