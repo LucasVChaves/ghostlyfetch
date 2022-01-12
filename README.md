@@ -2,7 +2,7 @@
 
 GlostlyFetch it's a UNIX shell tool for fetching system info like kernel version, memory stats and uptime  
 
-Don't get scared by Bob [^1], he is the ghost that fetches the informations for you! He's harmless and cute.  
+Don't get scared by Bob, he is the ghost that fetches the informations for you! He's harmless and cute.  
 
 <br/>
 
@@ -19,11 +19,11 @@ and run the following commands:
  - `cd ghostlyfetch`  
  - `cargo install --path .`
 
+## TODO:
+Modify the program to use the [sysinfo crate](https://docs.rs/sysinfo/0.11.5/sysinfo/index.html). This will be a big change that will take some time to be implemented.
 
 ## License
 
 This program is licensed under the MIT license
-
-[^1]: The formatting is a bit funky right now, but i'm working on it. 
 
 👻*boo*  

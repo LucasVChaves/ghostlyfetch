@@ -146,7 +146,7 @@ pub fn get_kernel() -> Result<String, String> {
     let result = kernel_file.read_to_string(&mut kernel);
 
     if result.is_err() {
-        return Err("error".to_string());
+        return Err("Error".to_string());
     }
 
     let re_kernel = match_regex(
@@ -157,9 +157,9 @@ pub fn get_kernel() -> Result<String, String> {
     if re_kernel.is_none() {
         return Err("Error".to_string());
     }
-
+    
     let re_kernel = re_kernel.unwrap();
-
+    
     let kernel = re_kernel.name("kernel_version").unwrap().as_str();
     return Ok(format_data("kernel", &kernel));
 }
