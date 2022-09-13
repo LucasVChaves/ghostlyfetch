@@ -1,15 +1,18 @@
 use std::env;
+use std::process;
+use systemstat::Platform;
 mod colours;
 mod fields;
 
 fn main() {
     let mut ascii_ghost = format!("{bold_black}      ___       {reset}
     {bold_black}    _/ ..\\      {reset}
-    {black}   ( \\  0/__   {reset}
+    {black}   ( \\  0/__    {reset}
     {black}    \\    \\__)   {reset}
     {white}    /     \\     {reset}
     {white}   /       \\    {reset}
     {bold_white}   \\-------/    {reset}
+    {bold_white}                {reset}
     ",
         bold_black = colours::bold_black,
         bold_white = colours::bold_white,
@@ -24,12 +27,12 @@ fn main() {
     if args.len() >= 2 && args[1] == "-spooky" {
         ascii_ghost = format!("{bold_red}      ___       {reset}
         {bold_red}    _/ ..\\      {reset}
-        {red}   ( \\  0/__   {reset}
+        {red}   ( \\  0/__    {reset}
         {red}    \\    \\__)   {reset}
         {yellow}    /     \\     {reset}
         {yellow}   /       \\    {reset}
         {bold_yellow}   \\-------/    {reset}
-        {bold_yellow} Trick or Treat? {reset}
+        {bold_yellow}Trick or Treat? {reset}
         ",
             bold_red = colours::bold_red,
             red = colours::red,
@@ -42,6 +45,8 @@ fn main() {
     let ascii_ghost = split_by_newline(ascii_ghost);
 
     let mut data_list: Vec<String> = Vec::new();
+
+    let stat = systemstat::System::new();
 
     if let Ok(value) = fields::get_user_host_name(is_halloween) {
         data_list.push(value.0);
@@ -60,12 +65,16 @@ fn main() {
         data_list.push(value)
     }
 
-    if let Ok(value) = fields::get_uptime() {
-        data_list.push(value)
+    if let Ok(value) = stat.uptime() {
+        data_list.push(fields::format_uptime(value))
     }
 
-    if let Ok(value) = fields::get_memory() {
-        data_list.push(value)
+    if let Ok(value) = stat.memory() {
+        data_list.push(fields::format_memory(value))
+    }
+
+    if let Ok(value) = stat.battery_life() {
+        data_list.push(fields::format_battery(value))
     }
 
     print_formated(ascii_ghost, data_list, is_halloween);
