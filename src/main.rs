@@ -1,5 +1,4 @@
 use std::env;
-use std::process;
 use systemstat::Platform;
 mod colours;
 mod fields;

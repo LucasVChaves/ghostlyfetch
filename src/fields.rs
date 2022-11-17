@@ -3,7 +3,6 @@
 use crate::colours;
 use regex::{Captures, Regex};
 use std::env;
-use std::fmt::format;
 use std::fs;
 use std::io::Read;
 
@@ -204,8 +203,9 @@ pub fn format_memory(mem: systemstat::Memory) -> String {
 }
 
 pub fn format_battery(battery: systemstat::BatteryLife) -> String {
-    format_data("battery", &format!("{percent}%, {hours}h and {minutes}m remaining",
+    format_data("battery", &format!("{percent:.1}%, {hours}h and {minutes}m remaining",
         percent = battery.remaining_capacity * 100.0,
-        hours = battery.remaining_time.as_secs() / 3000,
+        hours = battery.remaining_time.as_secs() / (60 * 60),
         minutes = battery.remaining_time.as_secs() % 60))
+    
 }

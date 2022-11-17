@@ -12,12 +12,14 @@ Don't get scared by Bob, he is the ghost that fetches the informations for you! 
 
 ## Installing
 
-To install GhostlyFetch you'll need the [rust compiler](https://www.rust-lang.org/tools/install) in your system
+To install GhostlyFetch you'll need the [rust compiler](https://www.rust-lang.org/tools/install) and [cargo](https://doc.rust-lang.org/cargo/) in your system
 and run the following commands:
+
+_You may need sudo permitions_
 
  - `git clone https://github.com/LucasVChaves/ghostlyfetch`  
  - `cd ghostlyfetch`  
- - `cargo install --path .`
+ - `./install.sh`  
 
 ## TODO:
 Modify the program to use the [sysinfo crate](https://docs.rs/sysinfo/0.11.5/sysinfo/index.html). This will be a big change that will take some time to be implemented.
