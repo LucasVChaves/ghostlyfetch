@@ -19,7 +19,7 @@ _You may need sudo permitions_
 
  - `git clone https://github.com/LucasVChaves/ghostlyfetch`  
  - `cd ghostlyfetch`  
- - `./install.sh`  
+ - `cargo install --path .`  
 
 ## TODO:
 Modify the program to use the [sysinfo crate](https://docs.rs/sysinfo/0.11.5/sysinfo/index.html). This will be a big change that will take some time to be implemented.
